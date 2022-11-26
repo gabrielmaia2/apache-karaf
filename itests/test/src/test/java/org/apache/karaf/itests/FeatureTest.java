@@ -68,10 +68,8 @@ public class FeatureTest extends BaseTest {
     @Test
     public void listCommand() throws Exception {
         String featureListOutput = executeCommand("feature:list");
-        System.out.println(featureListOutput);
         assertFalse(featureListOutput.isEmpty());
         featureListOutput = executeCommand("feature:list -i");
-        System.out.println(featureListOutput);
         assertFalse(featureListOutput.isEmpty());
     }
 
@@ -125,17 +123,17 @@ public class FeatureTest extends BaseTest {
 
     @Test
     public void installUninstallCommand() throws Exception {
-        System.out.println(executeCommand("feature:install -v -r wrapper", new RolePrincipal("admin")));
+        executeCommand("feature:install -v -r wrapper", new RolePrincipal("admin"));
         assertFeatureInstalled("wrapper");
-        System.out.println(executeCommand("feature:uninstall -r wrapper", new RolePrincipal("admin")));
+        executeCommand("feature:uninstall -r wrapper", new RolePrincipal("admin"));
         assertFeatureNotInstalled("wrapper");
     }
 
     @Test
     public void upgradeUninstallCommand() throws Exception {
-        System.out.println(executeAlias("feature:upgrade -v -r wrapper", new RolePrincipal("admin")));
+        executeAlias("feature:upgrade -v -r wrapper", new RolePrincipal("admin"));
         assertFeatureInstalled("wrapper");
-        System.out.println(executeCommand("feature:uninstall -r wrapper", new RolePrincipal("admin")));
+        executeCommand("feature:uninstall -r wrapper", new RolePrincipal("admin"));
         assertFeatureNotInstalled("wrapper");
     }
 
